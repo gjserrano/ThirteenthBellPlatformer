@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using PlatformLibrary;
 
 namespace PlatformerExample
 {
@@ -12,11 +13,10 @@ namespace PlatformerExample
     /// </summary>
     public class Game1 : Game
     {
-
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteSheet sheet;
+        Tileset tileset;
         Player player;
         List<Platform> platforms;
         AxisList world;
@@ -72,6 +72,8 @@ namespace PlatformerExample
             {
                 world.AddGameObject(platform);
             }
+
+            tileset = Content.Load<Tileset>("tiledspritesheet"); 
         }
 
         /// <summary>
@@ -127,10 +129,11 @@ namespace PlatformerExample
             // Draw the player
             player.Draw(spriteBatch);
             
-            // Draw an arbitrary range of sprites
+            // Draw an arbitrary range of sprites and corresponding tiles
             for(var i = 17; i < 30; i++)
             {
                 sheet[i].Draw(spriteBatch, new Vector2(i*25, 25), Color.White);
+                tileset[i].Draw(spriteBatch, new Vector2(i * 25, 50), Color.White);
             }
 
 

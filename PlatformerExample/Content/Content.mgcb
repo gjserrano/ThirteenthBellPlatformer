@@ -10,6 +10,8 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\PlatformerContentExtension\bin\Debug\PlatformerContentExtension.dll
+/reference:..\..\PlatformLibrary\bin\Debug\PlatformLibrary.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -48,4 +50,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:spritesheet.png
+
+#begin tiledspritesheet.tsx
+/importer:TilesetImporter
+/processor:TilesetProcessor
+/build:tiledspritesheet.tsx
 
