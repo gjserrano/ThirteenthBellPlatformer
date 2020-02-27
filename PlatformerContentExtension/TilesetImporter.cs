@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Content.Pipeline;
 
 using TInput = PlatformerContentExtension.TilesetContent;
+using Microsoft.Xna.Framework;
 
 namespace PlatformerContentExtension
 {
@@ -44,7 +45,7 @@ namespace PlatformerContentExtension
             // A tileset will contain an image element that serves as the source of the tiles
             XmlNodeList images = tileset.SelectNodes("//image");
             var imageFilename = images[0].Attributes["source"].Value;
-            var imageColorKey = images[0].Attributes["trans"].Value;
+            var imageColorKey = Color.White; //images[0].Attributes["trans"].Value;
 
             return new TilesetContent()
             {

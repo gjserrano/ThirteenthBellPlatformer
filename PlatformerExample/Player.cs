@@ -78,7 +78,7 @@ namespace PlatformerExample
         /// <summary>
         /// Gets and sets the position of the player on-screen
         /// </summary>
-        public Vector2 Position = new Vector2(200, 200);
+        public Vector2 Position = new Vector2(50, 350);
 
         public BoundingRectangle Bounds => new BoundingRectangle(Position - 1.8f * origin, 38, 41);
 

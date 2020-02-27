@@ -30,7 +30,9 @@ namespace PlatformerContentExtension
 
         public string ImageFilename { get; set; }
 
-        public string ImageColorKey { get; set; }
+        //public string ImageColorKey { get; set; }
+
+        public Color ImageColorKey { get; set; }
 
         public TextureContent Texture { get; set; }
 

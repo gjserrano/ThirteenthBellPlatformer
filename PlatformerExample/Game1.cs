@@ -16,6 +16,7 @@ namespace PlatformerExample
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteSheet sheet;
+        SpriteSheet saloonSheet;
         Tileset tileset;
         Player player;
         List<Platform> platforms;
@@ -57,14 +58,31 @@ namespace PlatformerExample
             var t = Content.Load<Texture2D>("spritesheet");
             sheet = new SpriteSheet(t, 21, 21, 3, 2);
 
+            var r = Content.Load<Texture2D>("SaloonResized2");
+            saloonSheet = new SpriteSheet(r, 596, 156, 0, 0);
+
             // Create the player with the corresponding frames from the spritesheet
-            var playerFrames = from index in Enumerable.Range(19, 30) select sheet[index];
+            var playerFrames = from index in Enumerable.Range(79, 90) select sheet[index];
             player = new Player(playerFrames);
-            
+
+            //var buildingFrames = from index in Enumerable.Range(0, 0) select saloonSheet[index];
+
+
             // Create the platforms
-            platforms.Add(new Platform(new BoundingRectangle(80, 300, 105, 21), sheet[1]));
-            platforms.Add(new Platform(new BoundingRectangle(280, 400, 84, 21), sheet[2]));
-            platforms.Add(new Platform(new BoundingRectangle(160, 200, 42, 21), sheet[3]));
+            //platforms.Add(new Platform(new BoundingRectangle(80, 300, 105, 21), sheet[1]));
+            //platforms.Add(new Platform(new BoundingRectangle(280, 400, 84, 21), sheet[2]));
+            //platforms.Add(new Platform(new BoundingRectangle(160, 200, 42, 21), sheet[3]));
+            platforms.Add(new Platform(new BoundingRectangle(0, 400, 600, 21), sheet[242])); //Starting Platform
+            platforms.Add(new Platform(new BoundingRectangle(575, 400, 600, 21), sheet[242])); //Under Saloon Platform
+            platforms.Add(new Platform(new BoundingRectangle(800, 150, 200, 21), sheet[1])); //Upper Platform
+            //platforms.Add(new Platform(new BoundingRectangle(575, 200, 50, 21), sheet[1])); //Jump Assist
+            Platform saloon = new Platform(new BoundingRectangle(575, 255, 596, 300), saloonSheet[0]); //Saloon
+            saloon.setBounds(100);
+            platforms.Add(saloon);
+            platforms.Add(new Platform(new BoundingRectangle(900, 130, 21, 21), sheet[18])); //Cactus
+            //platforms.Add(new Platform(new BoundingRectangle(575, 225, 600, 150), saloonSheet[0]));
+
+
 
             // Add the platforms to the axis list
             world = new AxisList();
@@ -111,7 +129,7 @@ namespace PlatformerExample
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Tan);
 
             // Calculate and apply the world/view transform
             var offset = new Vector2(200, 300) - player.Position;
@@ -130,11 +148,11 @@ namespace PlatformerExample
             player.Draw(spriteBatch);
             
             // Draw an arbitrary range of sprites and corresponding tiles
-            for(var i = 17; i < 30; i++)
+            /*for(var i = 17; i < 30; i++)
             {
                 sheet[i].Draw(spriteBatch, new Vector2(i*25, 25), Color.White);
                 tileset[i].Draw(spriteBatch, new Vector2(i * 25, 50), Color.White);
-            }
+            }*/
 
 
             spriteBatch.End();

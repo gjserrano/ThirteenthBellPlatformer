@@ -60,5 +60,10 @@ namespace PlatformerExample
             }
 
         }
+
+        public void setBounds(int height)
+        {
+            bounds.Height = height;
+        }
     }
 }
